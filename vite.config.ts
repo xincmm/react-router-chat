@@ -4,11 +4,14 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig(({ isSsrBuild }) => ({
+  server: {
+    port: 4500
+  },
   build: {
     rollupOptions: isSsrBuild
       ? {
-          input: "./server/app.ts",
-        }
+        input: "./server/app.ts",
+      }
       : undefined,
   },
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
